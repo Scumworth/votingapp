@@ -6,5 +6,11 @@ import 'index.css';
 import App from 'containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <App 
+    url='https://localhost:3001/api/pollitems'
+    pollInterval = {2000} />, 
+    document.getElementById('root')
+    );
+
 registerServiceWorker();
