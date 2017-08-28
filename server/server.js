@@ -4,12 +4,11 @@
 const express = require('express');
 const cors = require('cors');
 const {mongoose} = require('./db/mongoose');
-const {PollItem} = require('./models/pollitem')
+const {PollItem} = require('./models/pollitem');
 const bodyParser = require('body-parser');
 
 const app = express();
 const router = express.Router();
-
 const port = process.env.API_PORT || 3001;
 
 app.use(cors());
@@ -26,7 +25,7 @@ router.route('/pollitems')
     //retrieve all polls
     .get((req, res) => {
         PollItem.find().then((pollitems) => {
-            res.json(comments);
+            res.json(pollitems);
         }, (e) => {
             res.status(400).send(e);
         });

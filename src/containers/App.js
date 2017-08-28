@@ -16,7 +16,7 @@ export default class App extends Component {
     loadPollItems() {
         axios.get(this.props.url)
             .then((res) => {
-                this.setState({ data: res.data })
+                this.setState({ data: res.data });
             });
     }
 
