@@ -34,7 +34,9 @@ router.route('/pollitems')
     .post((req, res) => {
         const pollitem = new PollItem({
             author: req.body.author,
-            text: req.body.text
+            pollTitle: req.body.pollTitle,
+            description: req.body.description,
+            options: req.body.options
         });
        pollitem.save().then((pollitem) => {
            res.send({message: 'Poll added.'});

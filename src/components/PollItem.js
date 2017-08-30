@@ -5,6 +5,8 @@ export default class PollItem extends Component {
         return (
             <div>
                 <p>PollItem</p>
+                {this.props.text}
+                {this.props.author}
             </div>
         );
     }
