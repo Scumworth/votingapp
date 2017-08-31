@@ -11,33 +11,34 @@ export default class NewPollContainer extends Component {
             pollTitle: '',
             description: '',
             author: '',
-            option1: '',
-            option2: '',
-            options: [],
+            options: [{optionTitle: ''}, {optionTitle: ''}],
             numOptions: 2
         } 
         this.handleChange = this.handleChange.bind(this);       
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
+        this.handleRemoveOption = this.handleRemoveOption.bind(this);
     }
 
-    populateOptions(){
-        const optionsUpdate = this.state.options;;
-        const numOptions = this.state.numOptions;
-        for (let i = 1; i <= numOptions; i ++) {
-            optionsUpdate.push({optionsTitle: optionsUpdate[`option${i}`], votes: 0})
+    createSubmission() {
+        const options = this.state.options;
+        const submission = [];
+        for (let i = 0; i < options.length; i++) {
+            submission.push({optionTitle: this.state[`Option${i+1}`], votes: 0})
         }
-        this.setState({options: optionsUpdate});
+        return submission;
     }
+
     
     handleSubmit(event) {
+        const submission = this.createSubmission();
         event.preventDefault();
         console.log('buttonclicked');
-        this.populateOptions();
         axios.post(this.props.url, {
             author: 'Skynet',
             pollTitle: this.state.pollTitle,
             description: this.state.description,
-            options: this.state.options
+            options: submission
         })
             .then((res) => {
                 console.log(res);
@@ -57,12 +58,26 @@ export default class NewPollContainer extends Component {
         });
     }
 
+    handleAddOption() {
+        this.setState({options: this.state.options.concat({ optionTitle: '' })});
+
+    }
+    
+    handleRemoveOption(removalIdx) {
+        this.setState({options: this.state.options.filter((option) => {
+            return this.state.options.indexOf(option) !== removalIdx;
+        })});
+    }
+
     render(){
         return (
             <div>
                 <NewPoll 
+                    handleRemoveOption = { this.handleRemoveOption }
+                    handleAddOption = { this.handleAddOption }
                     handleSubmit = { this.handleSubmit }
                     handleChange = { this.handleChange }
+                    options = { this.state.options }
                 />
             </div>
         );

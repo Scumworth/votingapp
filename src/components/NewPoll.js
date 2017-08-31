@@ -23,19 +23,21 @@ export default class NewPoll extends Component {
                             onChange = { this.props.handleChange }
                             name = "description" 
                         />
-                        <FormControl
-                            type="text"
-                            placeholder="Option #1"
-                            onChange = { this.props.handleChange }
-                            name = "option1"
-                        />
-                        <FormControl
-                            type="text"
-                            placeholder="Option #2"
-                            onChange = { this.props.handleChange } 
-                            name = "option2"
-                        />
-                    </FormGroup>
+ 
+                        { this.props.options.map((option, idx) => (
+                            <div>
+                                <FormControl
+                                    type = "text"
+                                    placeholder = {`Option #${idx + 1}`} 
+                                    onChange = { this.props.handleChange }
+                                    name = {`Option${idx + 1}`}
+                                />
+                                <Button type= "button" onClick = {() => this.props.handleRemoveOption(idx)}>-</Button>
+                            </div>
+                            )) }
+                        
+                        </FormGroup>
+                        <Button type = "button" onClick = {this.props.handleAddOption}>+</Button>
                     <Button 
                         type = "submit"
                         onClick = { this.props.handleSubmit }
