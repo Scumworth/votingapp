@@ -4,12 +4,17 @@ import PollItem from 'components/PollItem';
 
 export default class PollList extends Component {
     render(){
-        const pollItemNodes = this.props.data.map((pollItem) => {
+        const pollItemNodes = this.props.data.map((pollItem, itemIndex) => {
             return (
                 <PollItem 
+                    pollTitle = { pollItem.pollTitle }
                     author = { pollItem.author }
                     key = { pollItem['_id']}
-                    text = { pollItem.text }
+                    description = { pollItem.description }
+                    numVotes = { pollItem.numVotes }
+                    options = { pollItem.options }
+                    handleVote = { this.props.handleVote }
+                    itemIndex = { itemIndex }
                 />
             );
         })

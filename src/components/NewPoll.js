@@ -5,6 +5,21 @@ import { Form, FormGroup, ControlLabel, Button, FormControl } from 'react-bootst
 
 export default class NewPoll extends Component {
     render(){
+
+        const formOptions = this.props.options.map((option, idx) => {
+            return (
+            <div>
+                <FormControl
+                    type = "text"
+                    placeholder = {`Option #${idx + 1}`}
+                    onChange = { this.props.handleChange }
+                    name = {`Option${idx + 1}`}
+                />
+                <Button type = "button" onClick = {() => this.props.handleRemoveOption(idx)}>-</Button>
+            </div>
+            );
+        });
+
         return (
             <div>
                 <h1>Add a New Poll</h1>
@@ -24,18 +39,8 @@ export default class NewPoll extends Component {
                             name = "description" 
                         />
  
-                        { this.props.options.map((option, idx) => (
-                            <div>
-                                <FormControl
-                                    type = "text"
-                                    placeholder = {`Option #${idx + 1}`} 
-                                    onChange = { this.props.handleChange }
-                                    name = {`Option${idx + 1}`}
-                                />
-                                <Button type= "button" onClick = {() => this.props.handleRemoveOption(idx)}>-</Button>
-                            </div>
-                            )) }
-                        
+                        { formOptions } 
+
                         </FormGroup>
                         <Button type = "button" onClick = {this.props.handleAddOption}>+</Button>
                     <Button 

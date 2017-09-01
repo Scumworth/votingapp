@@ -44,6 +44,16 @@ router.route('/pollitems')
            res.status(400).send(e);
        });
     })
+    .put((req, res) => {
+        const id = mongoose.Types.ObjectId(req.body.id);
+        const updateObj = req.body.updateObj;
+        
+        PollItem.findByIdAndUpdate(id, updateObj, {new: true}).then((pollitem) => {
+            res.send({message: 'Poll updated with vote'});
+        }, (e) => {
+        res.status(400).send(e);
+        });
+    })
 
 
 app.use('/api', router);
