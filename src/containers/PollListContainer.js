@@ -27,9 +27,10 @@ export default class PollListContainer extends Component {
                 //[itemIndex]: {options: { [optionIndex]: {votes: {$set: 2 }}}}
             //})
         //});
+        const newVoteTotal = this.state.data[itemIndex].options[optionIndex].votes + 1;
 
         const updateData = update(this.state.data, {
-            [itemIndex]: {options: { [optionIndex]: {votes: {$set: 2 }}}} 
+            [itemIndex]: {options: { [optionIndex]: {votes: {$set: newVoteTotal }}}} 
         }); 
         const updateObj = updateData[itemIndex];
         console.log('updateObj')

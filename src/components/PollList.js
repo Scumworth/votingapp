@@ -1,12 +1,12 @@
 //PollList.js
 import React, { Component } from 'react';
-import PollItem from 'components/PollItem';
+import PollItemContainer from 'containers/PollItemContainer';
 
 export default class PollList extends Component {
     render(){
         const pollItemNodes = this.props.data.map((pollItem, itemIndex) => {
             return (
-                <PollItem 
+                <PollItemContainer
                     pollTitle = { pollItem.pollTitle }
                     author = { pollItem.author }
                     key = { pollItem['_id']}
@@ -15,12 +15,12 @@ export default class PollList extends Component {
                     options = { pollItem.options }
                     handleVote = { this.props.handleVote }
                     itemIndex = { itemIndex }
+                    itemData = { pollItem }
                 />
             );
         })
         return (
             <div>
-                <h1>polldata</h1>
                 { pollItemNodes }
             </div>
         );
