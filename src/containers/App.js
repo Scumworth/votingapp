@@ -10,15 +10,35 @@ import NewPollContainer from 'containers/NewPollContainer';
 
 export default class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: false,
+            userId: "",
+            nav: "home"
+        }
+        this.handleNavSelect = this.handleNavSelect.bind(this)
+    }
+
+    handleNavSelect() {
+        //set nav state     
+    }
+
     render() {
         return (
             <div>
-                <Header />
+                <Header 
+                    login = { this.state.login }
+                />
                 <GoogleLogin
                     clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                     buttonText="Login with Google"
                     onSuccess={(response) => {
                         console.log(response);
+                        this.setState({
+                            login: true,
+                            userId: response.profileObj.email
+                        });
                     }}
                     onFailure={(response) => {
                         console.log(response);
@@ -30,6 +50,8 @@ export default class App extends Component {
                 />
                 <NewPollContainer 
                     url = { this.props.url }
+                    login = { this.state.login }
+                    userId = { this.state.userId }
                 />
                 <Footer /> 
             </div>

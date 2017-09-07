@@ -10,7 +10,6 @@ export default class NewPollContainer extends Component {
         this.state = {
             pollTitle: '',
             description: '',
-            author: '',
             options: [{optionTitle: ''}, {optionTitle: ''}],
             numOptions: 2
         } 
@@ -35,7 +34,7 @@ export default class NewPollContainer extends Component {
         event.preventDefault();
         console.log('buttonclicked');
         axios.post(this.props.url, {
-            author: 'Skynet',
+            author: this.props.userId,
             pollTitle: this.state.pollTitle,
             description: this.state.description,
             options: submission
@@ -72,13 +71,16 @@ export default class NewPollContainer extends Component {
     render(){
         return (
             <div>
-                <NewPoll 
-                    handleRemoveOption = { this.handleRemoveOption }
-                    handleAddOption = { this.handleAddOption }
-                    handleSubmit = { this.handleSubmit }
-                    handleChange = { this.handleChange }
-                    options = { this.state.options }
-                />
+                { this.props.login
+                    ?<NewPoll 
+                        handleRemoveOption = { this.handleRemoveOption }
+                        handleAddOption = { this.handleAddOption }
+                        handleSubmit = { this.handleSubmit }
+                        handleChange = { this.handleChange }
+                        options = { this.state.options }
+                    />
+                    : null
+                }
             </div>
         );
     }
