@@ -1,7 +1,7 @@
 // NewPoll.js
 
 import React, { Component } from 'react';
-import { Form, FormGroup, ControlLabel, Button, FormControl } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, Button, FormControl, Row, Col } from 'react-bootstrap';
 
 export default class NewPoll extends Component {
     render(){
@@ -9,13 +9,20 @@ export default class NewPoll extends Component {
         const formOptions = this.props.options.map((option, idx) => {
             return (
             <div>
-                <FormControl
-                    type = "text"
-                    placeholder = {`Option #${idx + 1}`}
-                    onChange = { this.props.handleChange }
-                    name = {`Option${idx + 1}`}
-                />
-                <Button type = "button" onClick = {() => this.props.handleRemoveOption(idx)}>-</Button>
+                <Row>
+                    <Col xs = {10}>
+                    <FormControl
+                        type = "text"
+                        placeholder = {`Option #${idx + 1}`}
+                        onChange = { this.props.handleChange }
+                        name = {`Option${idx + 1}`}
+                        key = {option['_id']}
+                    />
+                    </Col>
+                    <Col xs = {2}>
+                    <Button block type = "button" onClick = {() => this.props.handleRemoveOption(idx)}>-</Button>
+                    </Col>
+                </Row>
             </div>
             );
         });

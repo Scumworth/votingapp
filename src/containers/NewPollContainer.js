@@ -71,16 +71,13 @@ export default class NewPollContainer extends Component {
     render(){
         return (
             <div>
-                { this.props.login
-                    ?<NewPoll 
-                        handleRemoveOption = { this.handleRemoveOption }
-                        handleAddOption = { this.handleAddOption }
-                        handleSubmit = { this.handleSubmit }
-                        handleChange = { this.handleChange }
-                        options = { this.state.options }
-                    />
-                    : null
-                }
+                <NewPoll 
+                    handleRemoveOption = { this.handleRemoveOption }
+                    handleAddOption = { this.handleAddOption }
+                    handleSubmit = { this.handleSubmit }
+                    handleChange = { this.handleChange }
+                    options = { this.state.options }
+                />
             </div>
         );
     }

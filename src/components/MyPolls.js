@@ -1,9 +1,9 @@
-//PollList.js
+//MyPolls.js
 import React, { Component } from 'react';
 import PollItemContainer from 'containers/PollItemContainer';
 
-export default class PollList extends Component {
-    render(){
+export default class MyPolls extends Component {
+    render() {
         const pollItemNodes = this.props.data.map((pollItem, itemIndex) => {
             return (
                 <PollItemContainer
@@ -16,7 +16,6 @@ export default class PollList extends Component {
                     handleVote = { this.props.handleVote }
                     itemIndex = { itemIndex }
                     itemData = { pollItem }
-                    url = { this.props.url }
                 />
             );
         })

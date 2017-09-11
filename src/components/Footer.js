@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Footer extends Component {
     render(){
         return (
-            <div>
+            <div style = {{textAlign: 'left'}}>
                 <p>This voting app is built for FreeCodeCamp</p>
                 <p>User Stories:</p>
                 <ul>

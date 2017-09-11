@@ -2,11 +2,13 @@
 import React, { Component } from 'react';
 import 'containers/App.css';
 import axios from 'axios';
-import GoogleLogin from 'react-google-login';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import PollListContainer from 'containers/PollListContainer';
 import NewPollContainer from 'containers/NewPollContainer';
+import MyPollsContainer from 'containers/MyPollsContainer';
+import SharePollContainer from 'containers/SharePollContainer';
 
 export default class App extends Component {
 
@@ -15,44 +17,59 @@ export default class App extends Component {
         this.state = {
             login: false,
             userId: "",
+            navKey: 1,
+            
+            //1 = Home 
+            //2 = My Polls
+            //3 = New Polls
             nav: "home"
-        }
-        this.handleNavSelect = this.handleNavSelect.bind(this)
+        };
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handleNavSelect() {
-        //set nav state     
+    handleLogin(response) {
+        this.setState({
+            login: true,
+            userId: response.profileObj.email
+        });
+
     }
+
+    
 
     render() {
+        
         return (
             <div>
                 <Header 
                     login = { this.state.login }
+                    handleLogin = { this.handleLogin }
+                    navKey = { this.state.navKey}
                 />
-                <GoogleLogin
-                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                    buttonText="Login with Google"
-                    onSuccess={(response) => {
-                        console.log(response);
-                        this.setState({
-                            login: true,
-                            userId: response.profileObj.email
-                        });
-                    }}
-                    onFailure={(response) => {
-                        console.log(response);
-                    }}
-                 />
-                <PollListContainer 
-                    pollInterval = { this.props.pollInterval }
-                    url = { this.props.url }
-                />
-                <NewPollContainer 
-                    url = { this.props.url }
-                    login = { this.state.login }
-                    userId = { this.state.userId }
-                />
+                <Switch>
+                    <Route exact path = "/" render = { () => (
+                        <Redirect to = "/polls"/>
+                    )}/>
+                    <Route exact path = "/polls" render = { () => <PollListContainer
+                            pollInterval = { this.props.pollInterval }
+                            url = { this.props.url }
+          
+                        />}
+                    />
+                    <Route path = "/polls/:id" render = {(props) => <SharePollContainer {...props} url = { this.props.url }/>} />
+                    <Route path = "/mypolls" render = { () => <MyPollsContainer
+                            pollInterval = { this.props.pollInterval }
+                            url = { this.props.url }
+                            userId = { this.state.userId }
+                        />}
+                    />
+                    <Route path = "/newpoll" render = { () => <NewPollContainer
+                            url = { this.props.url }
+                            login = { this.state.login }
+                            userId = { this.state.userId }
+                        />}
+                    />
+                </Switch>
                 <Footer /> 
             </div>
         );

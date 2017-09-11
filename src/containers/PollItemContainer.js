@@ -1,6 +1,6 @@
 //PollItemContainer.js
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Well } from 'react-bootstrap';
 import PollItem from 'components/PollItem';
 
 export default class PollItemContainer extends Component {
@@ -18,13 +18,13 @@ export default class PollItemContainer extends Component {
         return (
             <div>
                 <div onClick = {this.handleClick}>
-                    <h3> {this.props.pollTitle } </h3>
+                    <Well> {this.props.pollTitle } </Well>
                 </div>
                 {this.state.extended  
                     ? <PollItem
+                        url = { this.props.url }
                         pollTitle = { this.props.pollTitle }
                         author = { this.props.author }
-                        key = { this.props.key }
                         description = { this.props.description }
                         numVotes = { this.props.numVotes }
                         options = { this.props.options }

@@ -1,27 +1,29 @@
-//PollListContainer.js
+//MyPollsContainer.js
 import React, { Component } from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
-import PollList from 'components/PollList';
+import MyPolls from 'components/MyPolls';
 
-export default class PollListContainer extends Component {
 
+export default class MyPollsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { data: [] };
-        this.loadPollItems = this.loadPollItems.bind(this);
+        this.loadUserPolls = this.loadUserPolls.bind(this);
         this.handleVote = this.handleVote.bind(this);
     }
 
-    loadPollItems() {
-        axios.get(this.props.url)
+    loadUserPolls() {
+        axios.get(`${this.props.url}/${this.props.userId}`)
             .then((res) => {
+                console.log(res);
                 this.setState({ data: res.data });
             })
             .catch((err) => console.log(err));
     }
 
     handleVote(itemIndex, optionIndex) {
+        
         const newVoteTotal = this.state.data[itemIndex].options[optionIndex].votes + 1;
 
         const updateData = update(this.state.data, {
@@ -41,12 +43,12 @@ export default class PollListContainer extends Component {
             .catch((err) => {
                 console.log(err);
             })
+
     }
 
     componentDidMount() {
-        console.log('mounting');
-        this.loadPollItems();
-        const intervalId = setInterval(this.loadPollItems, this.props.pollInterval);
+        this.loadUserPolls();
+        const intervalId  = setInterval(this.loadUserPolls, this.props.pollInterval);
         this.setState({intervalId: intervalId});
     }
 
@@ -54,12 +56,13 @@ export default class PollListContainer extends Component {
         clearInterval(this.state.intervalId);
     }
 
+    
+
     render() {
         return (
-            <PollList 
+            <MyPolls
                 data = { this.state.data }
                 handleVote = { this.handleVote }
-                url = { this.props.url } 
             />
         );
     }

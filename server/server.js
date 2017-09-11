@@ -55,7 +55,25 @@ router.route('/pollitems')
         });
     })
 
+router.route('/pollitems/:userId')
+    //retrieve all polls by the specified user
+    .get((req, res) => {
+        PollItem.find({author: req.params.userId}).then((pollitems) => {
+            res.json(pollitems);
+        }, (e) => {
+            res.status(400).send(e);
+        });
+    });
 
+router.route('/pollitems/singlepoll/:id')
+    //retrieve poll with specific id
+    .get((req, res) => {
+        PollItem.findById(req.params.id).then((pollitem) => {
+            res.json(pollitem);
+        }, (e) => {
+            res.status(400).send(e); 
+        });
+    });
 app.use('/api', router);
 
 app.listen(port, () => {

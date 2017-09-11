@@ -2,14 +2,17 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import 'index.css';
 import App from 'containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(
+ReactDOM.render((
+    <BrowserRouter>
     <App 
     url='http://localhost:3001/api/pollitems'
-    pollInterval = {2000} />, 
+    pollInterval = {2000} />
+    </BrowserRouter>), 
     document.getElementById('root')
     );
 

@@ -6,7 +6,6 @@ export default class PieChart extends Component {
     render(){
         return (
             <div>
-                <p>chart rendered below</p>
                 <Chart
                     chartType = "PieChart"
                     data = { this.props.chartData }
