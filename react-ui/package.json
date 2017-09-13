@@ -25,9 +25,9 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
-    "start-dev": "cross-env NODE_PATH=react-ui/src nf start -p 3000",
+    "start-dev": "cross-env NODE_PATH=src nf start -p 3000",
     "build": "react-scripts build",
-    "test": "cross-env NODE_PATH=react-ui/src react-scripts test --env=jsdom",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
