@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render((
     <BrowserRouter>
     <App 
-    url='/api/pollitems'
+        url='https://glacial-eyrie-88793.herokuapp.com/api/pollitems'
     pollInterval = {2000} />
     </BrowserRouter>), 
     document.getElementById('root')
