@@ -13,10 +13,10 @@ export default class ShareWithFriends extends Component {
         console.log(this.props);
         return (
             <div>
-                <FacebookShareButton url = { baseUrl + this.props.data['_id'] } quote = {title} >
+                <FacebookShareButton url = { baseUrl + this.props.id } quote = {title} >
                 <FacebookIcon size = {32} round />
             </FacebookShareButton>
-                <FacebookShareCount url = { baseUrl + this.props.key } />
+                <FacebookShareCount url = { baseUrl + this.props.id } />
             </div>
         );
     }

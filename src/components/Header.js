@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 import GoogleLogin from 'react-google-login';
 
 export default class Header extends Component {
@@ -10,20 +10,20 @@ export default class Header extends Component {
         return (
             <div style = {{textAlign: 'right'}}>
                 <Nav bsStyle = "pills">
-                    <LinkContainer active = {this.props.navKey === 1} to = "/polls">
-                        <NavItem eventKey = {1}>Home</NavItem>
-                    </LinkContainer>
+                    <IndexLinkContainer to = "/polls">
+                        <NavItem>All Polls</NavItem>
+                    </IndexLinkContainer>
                     
                     { this.props.login
-                            ? <LinkContainer active = {this.props.navKey === 2} to = "/mypolls">
-                                <NavItem eventKey = {2}>My Polls</NavItem>
-                              </LinkContainer>
+                            ? <IndexLinkContainer to = "/mypolls">
+                                <NavItem>My Polls</NavItem>
+                              </IndexLinkContainer>
                         : null
                     }  
                     { this.props.login
-                            ? <LinkContainer active = {this.props.navKey === 3} to = "/newpoll">
-                                <NavItem eventKey = {3}>New Poll</NavItem>
-                              </LinkContainer>
+                            ? <IndexLinkContainer to = "/newpoll">
+                                <NavItem>New Poll</NavItem>
+                              </IndexLinkContainer>
                         : null
                     }
                     { !this.props.login
