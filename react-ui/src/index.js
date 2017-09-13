@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render((
     <BrowserRouter>
     <App 
-    url='http://localhost:3001/api/pollitems'
+    url='/api/pollitems'
     pollInterval = {2000} />
     </BrowserRouter>), 
     document.getElementById('root')
