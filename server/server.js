@@ -51,9 +51,10 @@ router.route('/pollitems')
         PollItem.findByIdAndUpdate(id, updateObj, {new: true}).then((pollitem) => {
             res.send({message: 'Poll updated with vote'});
         }, (e) => {
-        res.status(400).send(e);
+            res.status(400).send(e);
         });
     })
+    
 
 router.route('/pollitems/:userId')
     //retrieve all polls by the specified user
@@ -73,7 +74,15 @@ router.route('/pollitems/singlepoll/:id')
         }, (e) => {
             res.status(400).send(e); 
         });
+    })
+    .delete((req,res) => {
+        PollItem.remove({ _id: req.params.id }).then((pollitem) => {
+            console.log(pollitem + ' removed');
+        }, (e) => {
+            res.status(400).send(e);
+        })
     });
+
 app.use('/api', router);
 
 app.listen(port, () => {

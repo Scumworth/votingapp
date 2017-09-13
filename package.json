@@ -1,36 +1,26 @@
 {
-  "name": "votingapp",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.16.2",
-    "body-parser": "^1.17.2",
-    "bootstrap": "^3.3.7",
-    "cors": "^2.8.4",
-    "d3": "^4.10.0",
-    "express": "^4.15.4",
-    "foreman": "^2.0.0",
-    "immutability-helper": "^2.3.1",
-    "marked": "^0.3.6",
-    "mongoose": "^4.11.7",
-    "nodemon": "^1.11.0",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.2",
-    "react-dom": "^15.6.1",
-    "react-google-login": "^2.9.3",
-    "react-router-bootstrap": "^0.24.3",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.11",
-    "react-share": "^1.16.0"
-  },
-  "scripts": {
-    "start": "cross-env NODE_PATH=src react-scripts start",
-    "start-dev": "cross-env NODE_PATH=src nf start -p 3000",
-    "build": "react-scripts build",
-    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "cross-env": "^5.0.5"
-  }
+    "name": "votingapp-node",
+    "version": "1.0.0",
+    "engines": {
+        "node": "7.8.0"
+    },
+    "scripts": {
+        "start": "node server",
+        "heroku-postBuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build" 
+    },
+    "cacheDirectories": [
+        "node_modules",
+        "react-ui/node_modules"
+    ],
+    "dependencies": {
+        "express": "^4.14.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Scumworth/votingapp"
+    },
+    "license": "MIT",
+    "devDependencies": {
+    }
+    
 }
