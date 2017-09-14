@@ -6,11 +6,13 @@ const cors = require('cors');
 const {mongoose} = require('./db/mongoose');
 const {PollItem} = require('./models/pollitem');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 const router = express.Router();
 const port = process.env.PORT || 3001;
 
+//serve any static files
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 app.use(cors());
