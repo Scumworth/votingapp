@@ -11,6 +11,8 @@ const app = express();
 const router = express.Router();
 const port = process.env.PORT || 3001;
 
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
