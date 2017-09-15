@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
-import PollItem from 'components/PollItem';
+import PollItem from './../components/PollItem';
 
 export default class SharePollContainer extends Component {
 

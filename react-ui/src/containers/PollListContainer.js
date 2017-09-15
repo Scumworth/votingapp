@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
-import PollList from 'components/PollList';
+import PollList from './../components/PollList';
 
 export default class PollListContainer extends Component {
 

@@ -1,6 +1,6 @@
 //PieChartContainer.js
 import React, { Component } from 'react';
-import PieChart from 'components/PieChart'; 
+import PieChart from './../components/PieChart'; 
 
 export default class PieChartContainer extends Component {
     constructor(props) {

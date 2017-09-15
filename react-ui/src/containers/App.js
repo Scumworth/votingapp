@@ -1,14 +1,14 @@
 //App.js
 import React, { Component } from 'react';
-import 'containers/App.css';
+import './App.css';
 import axios from 'axios';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import PollListContainer from 'containers/PollListContainer';
-import NewPollContainer from 'containers/NewPollContainer';
-import MyPollsContainer from 'containers/MyPollsContainer';
-import SharePollContainer from 'containers/SharePollContainer';
+import Header from './../components/Header';
+import Footer from './../components/Footer';
+import PollListContainer from './PollListContainer';
+import NewPollContainer from './NewPollContainer';
+import MyPollsContainer from './MyPollsContainer';
+import SharePollContainer from './SharePollContainer';
 
 export default class App extends Component {
 

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import { Button, Well } from 'react-bootstrap';
-import PollItem from 'components/PollItem';
+import PollItem from './../components/PollItem';
 import { Route } from 'react-router-dom';
 
 class PollItemContainer extends Component {

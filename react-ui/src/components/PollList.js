@@ -1,6 +1,6 @@
 //PollList.js
 import React, { Component } from 'react';
-import PollItemContainer from 'containers/PollItemContainer';
+import PollItemContainer from './../containers/PollItemContainer';
 
 export default class PollList extends Component {
 

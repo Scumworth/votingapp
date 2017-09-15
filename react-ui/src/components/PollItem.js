@@ -1,8 +1,8 @@
 //PollItem.js
 import React, { Component } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
-import PieChartContainer from 'containers/PieChartContainer';
-import ShareWithFriends from 'components/ShareWithFriends';
+import PieChartContainer from './../containers/PieChartContainer';
+import ShareWithFriends from './../components/ShareWithFriends';
 import { Route } from 'react-router-dom';
 
 export default class PollItem extends Component {

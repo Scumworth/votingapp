@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
-import MyPolls from 'components/MyPolls';
+import MyPolls from './../components/MyPolls';
 
 
 export default class MyPollsContainer extends Component {

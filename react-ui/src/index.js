@@ -4,8 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import App from 'containers/App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './containers/App';
+//import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
     <BrowserRouter>
@@ -16,7 +16,7 @@ ReactDOM.render((
     document.getElementById('root')
     );
 
-registerServiceWorker();
+//registerServiceWorker();
 
 
 //url must be changed
