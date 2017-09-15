@@ -68,7 +68,7 @@ class PollItemContainer extends Component {
                     />
                     : null
                 }
-                {this.props.userId
+                {(this.props.userId && this.state.extended)
                     ? <Form>
                         <FormControl
                             type = "text"
