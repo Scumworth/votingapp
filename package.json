@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "node server",
-    "heroku-postbuild": "cd react-ui/ cross-env NODE_PATH=src && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd react-ui/ cross-env NODE_PATH=./src && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "cacheDirectories": [
     "node_modules",
