@@ -1,7 +1,7 @@
 //PollItemContainer.js
 import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
-import { Button, Well } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, FormControl, Button, Well } from 'react-bootstrap';
 import PollItem from './../components/PollItem';
 import { Route } from 'react-router-dom';
 
@@ -12,6 +12,8 @@ class PollItemContainer extends Component {
             extended: false
         };
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleCustomVote = this.handleCustomVote.bind(this);
     }
     handleClick() {
         this.setState({extended: !this.state.extended});
@@ -19,6 +21,31 @@ class PollItemContainer extends Component {
     handleClickOutside = () => {
         this.setState({extended: false});
     }
+
+    handleChange(event) {
+        event.preventDefault();
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleCustomVote(event) {
+        event.preventDefault();
+        if (this.state.itemData.voters.indexOf(this.props.userId) !== -1) {
+            alert('You have already voted in this poll, fool.');
+        }
+        else if(!this.props.userId) {
+            alert('Please Login to Vote, Sir or Madam');
+        }
+        else {
+            console.log('add handle custom vote');
+        }
+
+    }
+
     render(){
         return (
             <div>
@@ -39,6 +66,20 @@ class PollItemContainer extends Component {
                         id = { this.props.id }
                         userId = { this.props.userId }
                     />
+                    : null
+                }
+                {this.props.userId
+                    ? <Form>
+                        <FormControl
+                            type = "text"
+                            placeholder = 'Add custom option'
+                            onChange = { this.handleChange }
+                            name = "customOption"
+                        />
+                        <Button onClick = { () => {
+                            this.handleCustomVote
+                        }}> Vote For Custom Option </Button>
+                    </Form>
                     : null
                 }
                 {(this.props.userId && this.props.myPolls)
