@@ -28,7 +28,7 @@ export default class Header extends Component {
                     }
                     { !this.props.login
                         ? <GoogleLogin
-                        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                        clientId="897720901370-lr3h0pkriojesaml38bb616qftinvh41.apps.googleusercontent.com"
                         buttonText="Login with Google"
                         onSuccess={this.props.handleLogin}
                         onFailure={(response) => {
