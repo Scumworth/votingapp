@@ -10,7 +10,7 @@ import App from './containers/App';
 ReactDOM.render((
     <BrowserRouter>
     <App 
-    url='https://glacial-eyrie-88793.herokuapp.com/api/pollitems'
+    url='https://powerful-stream-48801.herokuapp.com/api/pollitems'
     pollInterval = {2000} />
     </BrowserRouter>), 
     document.getElementById('root')
