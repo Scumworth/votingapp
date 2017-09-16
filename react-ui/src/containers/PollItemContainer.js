@@ -44,9 +44,9 @@ class PollItemContainer extends Component {
         }
         else if (this.state.customOption) {
             const itemData = this.props.itemData;
-            const optionsUpdate = itemData.options.push({optionTitle: this.state.customOption, votes: 1})
+            const optionsUpdate = itemData.options.concat([{optionTitle: this.state.customOption, votes: 1}]);
             console.log(optionsUpdate);
-            const votersUpdate = itemData.voters.push(this.props.userId);
+            const votersUpdate = itemData.voters.concat([this.props.userId]);
             console.log(votersUpdate);
             console.log('--------------------------');
             const updateObj = update(itemData, {
