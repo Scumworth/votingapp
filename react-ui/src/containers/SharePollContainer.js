@@ -71,7 +71,6 @@ export default class SharePollContainer extends Component {
                     pollTitle = { this.state.data.pollTitle }
                     author = { this.state.data.author }
                     description = { this.state.data.description }
-                    numVotes = { this.state.data.numVotes }
                     options = { this.state.data.options }
                     handleVote = { this.handleVote }
                     url = { this.props.url }

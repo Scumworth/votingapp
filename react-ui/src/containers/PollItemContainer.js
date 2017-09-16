@@ -45,16 +45,11 @@ class PollItemContainer extends Component {
         else if (this.state.customOption) {
             const itemData = this.props.itemData;
             const optionsUpdate = itemData.options.concat([{optionTitle: this.state.customOption, votes: 1}]);
-            console.log(optionsUpdate);
             const votersUpdate = itemData.voters.concat([this.props.userId]);
-            console.log(votersUpdate);
-            console.log('--------------------------');
             const updateObj = update(itemData, {
                 options: {$set: optionsUpdate},
                 voters: {$set: votersUpdate}
             });
-            console.log(this.props.itemData);
-            console.log(updateObj);
             axios.put(this.props.url, {
                 id: this.props.itemData['_id'],
                 updateObj: updateObj
@@ -84,7 +79,6 @@ class PollItemContainer extends Component {
                         pollTitle = { this.props.pollTitle }
                         author = { this.props.author }
                         description = { this.props.description }
-                        numVotes = { this.props.numVotes }
                         options = { this.props.options }
                         handleVote = { this.props.handleVote }
                         itemIndex = { this.props.itemIndex }

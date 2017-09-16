@@ -9,7 +9,6 @@ const PollItemSchema = new Schema({
     author: { type: String, required: true },
     description: { type: String },
     options: [{optionTitle: { type: String, lowercase: true, trim: true }, votes: Number }],
-    numVotes: { type: Number },
     voters: [{type: String}],
 });
 

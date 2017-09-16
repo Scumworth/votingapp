@@ -13,7 +13,6 @@ export default class MyPolls extends Component {
                         author = { pollItem.author }
                         key = { pollItem['_id']}
                         description = { pollItem.description }
-                        numVotes = { pollItem.numVotes }
                         options = { pollItem.options }
                         handleVote = { this.props.handleVote }
                         handleDelete = { this.props.handleDelete }
