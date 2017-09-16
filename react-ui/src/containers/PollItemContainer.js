@@ -1,9 +1,11 @@
 //PollItemContainer.js
 import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
+import axios from 'axios';
 import { Form, FormGroup, ControlLabel, FormControl, Button, Well } from 'react-bootstrap';
 import PollItem from './../components/PollItem';
 import { Route } from 'react-router-dom';
+import update from 'immutability-helper';
 
 class PollItemContainer extends Component {
     constructor(props) {
@@ -34,14 +36,30 @@ class PollItemContainer extends Component {
 
     handleCustomVote(event) {
         event.preventDefault();
-        if (this.state.itemData.voters.indexOf(this.props.userId) !== -1) {
+        if (this.props.itemData.voters.indexOf(this.props.userId) !== -1) {
             alert('You have already voted in this poll, fool.');
         }
         else if(!this.props.userId) {
             alert('Please Login to Vote, Sir or Madam');
         }
+        else if (this.state.customOption) {
+            const optionsUpdate = this.props.itemData.options.push({optionTitle: this.state.customOption, votes: 1})
+            const updateObj = update(this.props.itemData, {
+                options: {$set: optionsUpdate}
+            });
+            axios.put(this.props.url, {
+                id: this.props.id,
+                updateObj: updateObj
+            })
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
         else {
-            console.log('add handle custom vote');
+            console.log('No custom option specified');
         }
 
     }
@@ -76,9 +94,7 @@ class PollItemContainer extends Component {
                             onChange = { this.handleChange }
                             name = "customOption"
                         />
-                        <Button onClick = { () => {
-                            this.handleCustomVote
-                        }}> Vote For Custom Option </Button>
+                        <Button onClick = {this.handleCustomVote}> Vote For Custom Option </Button>
                     </Form>
                     : null
                 }
