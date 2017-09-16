@@ -38,7 +38,10 @@ export default class PollItem extends Component {
                             optionsData = { this.props.options } 
                         />
                         <p>{ this.props.numVotes } votes total.</p>
-                        <ShareWithFriends id = { this.props.key } />
+                        {(this.props.userId)
+                        ? <ShareWithFriends id = { this.props.key } />
+                        : null
+                        }
                     </Col>
                 </Row>
             </div>
