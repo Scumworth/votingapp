@@ -102,7 +102,12 @@ class PollItemContainer extends Component {
                             onChange = { this.handleChange }
                             name = "customOption"
                         />
-                        <Button onClick = {this.handleCustomVote}> Vote For Custom Option </Button>
+                        <Route render = {({history}) => (
+                            <Button onClick = {() => {
+                                this.handleCustomVote;
+                                history.push('/');
+                            }}> Vote For Custom Option </Button>
+                        )}/>
                     </Form>
                     : null
                 }
