@@ -44,11 +44,14 @@ class PollItemContainer extends Component {
         }
         else if (this.state.customOption) {
             const optionsUpdate = this.props.itemData.options.push({optionTitle: this.state.customOption, votes: 1})
+            const votersUpdate = this.props.itemData.voters.push(this.props.userId);
             const updateObj = update(this.props.itemData, {
-                options: {$set: optionsUpdate}
+                options: {$set: optionsUpdate},
+                voters: {$set: votersUpdate}
             });
+           
             axios.put(this.props.url, {
-                id: this.props.id,
+                id: this.props.itemData['_id'],
                 updateObj: updateObj
             })
                 .then((res) => {
