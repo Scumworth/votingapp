@@ -43,9 +43,10 @@ class PollItemContainer extends Component {
             alert('Please Login to Vote, Sir or Madam');
         }
         else if (this.state.customOption) {
-            const optionsUpdate = this.props.itemData.options.push({optionTitle: this.state.customOption, votes: 1})
-            const votersUpdate = this.props.itemData.voters.push(this.props.userId);
-            const updateObj = update(this.props.itemData, {
+            const itemData = this.props.itemData;
+            const optionsUpdate = itemData.options.push({optionTitle: this.state.customOption, votes: 1})
+            const votersUpdate = itemData.voters.push(this.props.userId);
+            const updateObj = update(itemData, {
                 options: {$set: optionsUpdate},
                 voters: {$set: votersUpdate}
             });
