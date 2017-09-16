@@ -49,7 +49,8 @@ class PollItemContainer extends Component {
                 options: {$set: optionsUpdate},
                 voters: {$set: votersUpdate}
             });
-           
+            console.log(this.props.itemData);
+            console.log(updateObj);
             axios.put(this.props.url, {
                 id: this.props.itemData['_id'],
                 updateObj: updateObj
